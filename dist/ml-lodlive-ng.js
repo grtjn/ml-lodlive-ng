@@ -15,7 +15,7 @@ angular.module('ml.lodlive', ['ml.common']);
         template: '<div id="mllodlive" class="graph"><ml-lodlive-legend></ml-lodlive-legend></div>'
       };
     }])
-    .controller('MLLodliveCtrl', ['$scope', 'MLRest', '$routeParams', function ($scope, mlRest, $routeParams) {
+    .controller('MLLodliveCtrl', ['$scope', 'MLRest', function ($scope, mlRest) {
       var model = {
         graph: {}
       };
