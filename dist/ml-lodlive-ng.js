@@ -12,12 +12,12 @@ angular.module('ml.lodlive', ['ml.common']);
           lodliveId: '@'
         },
         // TODO: get rid of id
-        template: '<div id="mllodlive" class="graph"><ml-lodlive-legend></ml-lodlive-legend></div>'
+        template: '<div id="mllodlive" class="ml-lodlive"><ml-lodlive-legend></ml-lodlive-legend></div>'
       };
     }])
     .controller('MLLodliveCtrl', ['$scope', 'MLRest', function ($scope, mlRest) {
       var model = {
-        graph: {}
+        lodlive: {}
       };
 
       if ($scope.lodliveId) {
