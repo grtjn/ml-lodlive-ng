@@ -1,0 +1,15 @@
+<div id="ml-lodlive-legend" class="ml-lodlive-legend">
+  <div class="ml-lodlive-legend-toggle" >
+    <button class="btn btn-xs ml-lodlive-legend-button" ng-click="model.showLegend = !model.showLegend"><i class="fa fa-life-ring"></i></button>
+  </div>
+  <div class="ml-lodlive-legend-display" ng-if="model.showLegend">
+    <h4><b>Legend</b></h4>
+    <div ng-repeat="item in model.items">
+      <span class="{{item.icon}}"></span> {{item.title}}
+    </div>
+    <h5><b>Relationships</b></h5>
+    <div ng-repeat="rel in model.relationships">
+      <span class="{{rel.icon}}" style="{{rel.style}}"></span> {{rel.title}}
+    </div>
+  </div>
+</div>
