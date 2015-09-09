@@ -7,7 +7,7 @@
         restrict: 'E',
         replace: true,
         scope: {
-          iri: '@',
+          iri: '=',
           profile: '='
         },
         template: '<div class="ml-lodlive"><ml-lodlive-legend></ml-lodlive-legend></div>',
