@@ -13,7 +13,7 @@
         template: '<div class="ml-lodlive"><ml-lodlive-legend></ml-lodlive-legend></div>',
         link: function($scope, $elem, $attrs) {
 
-          $scope.$watch(function() { return $attrs.iri; }, function(newVal, oldVal) {
+          $scope.$watch('parent.' + $attrs.iri, function(newVal, oldVal) {
             if (newVal) {
               angular.element($elem).lodlive({ profile: $scope.profile, firstUri: newVal, ignoreBnodes: true });
             }
