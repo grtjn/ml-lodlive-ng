@@ -6,7 +6,7 @@
       return {
         restrict: 'E',
         controller: 'MLLodliveCtrl',
-        replace: true,
+        //replace: true,
         scope: {
           lodliveId: '@'
         },

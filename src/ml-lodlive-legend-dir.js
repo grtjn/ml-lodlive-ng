@@ -7,7 +7,7 @@
       return {
         restrict: 'E',
         controller: 'MLLodliveLegendCtrl',
-        replace: true,
+        //replace: true,
         scope: {},
         templateUrl: '/ml-lodlive-ng/ml-lodlive-legend-dir.html'
       };

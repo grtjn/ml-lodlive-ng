@@ -7,7 +7,7 @@ angular.module('ml.lodlive', ['ml.common']);
       return {
         restrict: 'E',
         controller: 'MLLodliveCtrl',
-        replace: true,
+        //replace: true,
         scope: {
           lodliveId: '@'
         },
@@ -58,7 +58,7 @@ angular.module('ml.lodlive', ['ml.common']);
       return {
         restrict: 'E',
         controller: 'MLLodliveLegendCtrl',
-        replace: true,
+        //replace: true,
         scope: {},
         templateUrl: '/ml-lodlive-ng/ml-lodlive-legend-dir.html'
       };

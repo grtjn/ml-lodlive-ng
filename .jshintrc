@@ -18,7 +18,9 @@
     "google": false,
     "$": false,
     "_": false,
-    "d3": false
+    "d3": false,
+    "jQuery": true,
+    "MarkLogicProfile": true
   }
 }
 
