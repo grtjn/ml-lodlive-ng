@@ -60,7 +60,7 @@ angular.module('ml.lodlive', ['ml.common']);
         controller: 'MLLodliveLegendCtrl',
         replace: true,
         scope: {},
-        templateUrl: '/ml-lodlive/ml-lodlive-legend-dir.html'
+        templateUrl: '/ml-lodlive-ng/ml-lodlive-legend-dir.html'
       };
     }])
     .controller('MLLodliveLegendCtrl', ['$scope', function ($scope) {
