@@ -162,9 +162,9 @@ angular.module('ml.lodlive', ['ml.common', 'ml.lodlive.tpls']);
         templateUrl: '/ml-lodlive-ng/ml-lodlive-legend-dir.html'
       };
     }])
-    .controller('MLLodliveLegendCtrl', ['$scope', function ($scope) {
+    .controller('MLLodliveLegendCtrl', ['$scope', 'MLLodliveExampleProfile', function ($scope, profile) {
       var model = {
-        profile: MarkLogicProfile,
+        profile: profile,
         showLegend: false,
         items: [
           {
