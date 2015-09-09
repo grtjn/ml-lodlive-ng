@@ -14,7 +14,7 @@ angular.module('ml.lodlive', ['ml.common', 'ml.lodlive.tpls']);
         template: '<div class="ml-lodlive"><ml-lodlive-legend></ml-lodlive-legend></div>',
         link: function($scope, $elem, $attrs) {
 
-          $scope.$watch('parent.' + $attrs.iri, function(newVal, oldVal) {
+          $scope.$watch(function() { return $attrs.iri; }, function(newVal, oldVal) {
             if (newVal) {
               angular.element($elem).lodlive({ profile: $scope.profile, firstUri: newVal, ignoreBnodes: true });
             }
