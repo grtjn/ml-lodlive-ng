@@ -10,7 +10,7 @@
           iri: '=',
           profile: '='
         },
-        template: '<div class="ml-lodlive"><ml-lodlive-legend></ml-lodlive-legend></div>',
+        template: '<div class="ml-lodlive"><ml-lodlive-legend profile="profile"></ml-lodlive-legend></div>',
         link: function($scope, $elem, $attrs) {
 
           $scope.$watch('iri', function(newVal, oldVal) {

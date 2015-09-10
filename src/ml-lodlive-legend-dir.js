@@ -8,13 +8,15 @@
         restrict: 'E',
         controller: 'MLLodliveLegendCtrl',
         replace: true,
-        scope: {},
+        scope: {
+          profile: '='
+        },
         templateUrl: '/ml-lodlive-ng/ml-lodlive-legend-dir.html'
       };
     }])
-    .controller('MLLodliveLegendCtrl', ['$scope', 'MLLodliveExampleProfile', function ($scope, profile) {
+    .controller('MLLodliveLegendCtrl', ['$scope', function ($scope) {
       var model = {
-        profile: profile,
+        profile: $scope.profile,
         showLegend: false,
         items: [
           {
