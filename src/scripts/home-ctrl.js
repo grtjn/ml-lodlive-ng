@@ -3,8 +3,10 @@
 
   angular.module('mlLodLiveNgDemo')
   
-    .factory('HomeModel', ['$window', function ($window) {
+    .factory('HomeModel', ['$window', 'MLLodliveProfileFactory', function ($window, factory) {
       return {
+        iri: 'http://dbpedia.org/resource/Barack_Obama',
+        profile: factory.profile('dbpedia')
       };
     }])
     
