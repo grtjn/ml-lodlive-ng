@@ -27,7 +27,7 @@
     "ml-lodlive": {
       "main": [
         "css/ml-lodlive.css",
-        "dist/ml-lodlive-complete.js"
+        "dist/ml-lodlive.complete.js"
       ]
     }
   }
