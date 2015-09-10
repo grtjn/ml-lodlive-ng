@@ -13,7 +13,8 @@
     "jquery": "~2.1.4",
     "lodash": "~3.9.3",
     "ml-lodlive": "git@github.com:withjam/ml-lodlive.git",
-    "ml-lodlive-ng": "git@github.com:grtjn/ml-lodlive-ng.git"
+    "ml-lodlive-ng": "git@github.com:grtjn/ml-lodlive-ng.git",
+    "ml-common-ng": "~0.0.6"
   },
   "devDependencies": {},
   "overrides": {
