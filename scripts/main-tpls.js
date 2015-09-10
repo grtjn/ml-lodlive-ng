@@ -1,8 +1,8 @@
 (function(module) {
 try {
-  module = angular.module('mlGoogleMapsDemo.Tpls');
+  module = angular.module('mlLodLiveNgDemo.Tpls');
 } catch (e) {
-  module = angular.module('mlGoogleMapsDemo.Tpls', []);
+  module = angular.module('mlLodLiveNgDemo.Tpls', []);
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('/home.html',
@@ -12,9 +12,9 @@ module.run(['$templateCache', function($templateCache) {
 
 (function(module) {
 try {
-  module = angular.module('mlGoogleMapsDemo.Tpls');
+  module = angular.module('mlLodLiveNgDemo.Tpls');
 } catch (e) {
-  module = angular.module('mlGoogleMapsDemo.Tpls', []);
+  module = angular.module('mlLodLiveNgDemo.Tpls', []);
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('/quickstart.html',

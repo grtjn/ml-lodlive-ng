@@ -47,7 +47,7 @@ gulp.task('templates', ['clean'], function() {
       quotes: true
     }))
     .pipe(html2Js({
-      moduleName: 'mlGoogleMapsDemo.Tpls',
+      moduleName: 'mlLodLiveNgDemo.Tpls',
       prefix: '/'
     }))
     
