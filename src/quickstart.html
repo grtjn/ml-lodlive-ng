@@ -15,11 +15,11 @@
                     (<a href="https://raw.github.com/grtjn/ml-lodlive-ng/master/dist/ml-lodlive-ng.min.js">minified version</a>) and put it with your other scripts.
                     Alternatively, you can use Bower to install it automatically:
                 </p>
-                <div hljs language="bash">bower install [--save] ml-lodlive-ng</div>
+                <div hljs no-escape language="bash">bower install [--save] ml-lodlive-ng</div>
                 <p>
                     Or if you prefer bleeding edge:
                 </p>
-                <div hljs language="bash">bower install [--save] git@github.com:grtjn/ml-lodlive-ng.git</div>
+                <div hljs no-escape language="bash">bower install [--save] git@github.com:grtjn/ml-lodlive-ng.git</div>
                 <p>
                   If not using Bower, you'll also need to fetch <a href="https://github.com/withjam/ml-lodlive/tree/v0.2.2" rel="external">ml-lodlive.complete.js (v0.2.2)</a> yourself.
                 </p>
@@ -31,9 +31,9 @@
                 <p>
                   Load ml-lodlive.complete.js, and ml-lodlive-ng.js into your HTML page (typically in the end of the <em>BODY</em> of your HTML):
                 </p>
-                <pre hljs language="html">
-<script src='/bower_components/ml-lodlive/dist/ml-lodlive.complete.js'></script>
-<script src='/bower_components/ml-lodlive-ng/dist/ml-lodlive-ng[.min].js'></script></pre>
+                <pre hljs no-escape language="html">
+&lt;script src='/bower_components/ml-lodlive/dist/ml-lodlive.complete.js'>&lt;/script>
+&lt;script src='/bower_components/ml-lodlive-ng/dist/ml-lodlive-ng[.min].js'>&lt;/script></pre>
                 <p class="text-muted">
                   Note: You can simplify this by making use of <a href="https://www.npmjs.com/package/wiredep" rel="external">wiredep</a>, optionally together with <a href="https://www.npmjs.com/package/gulp-useref" rel="external">gulp-useref</a>.
                 </p>
@@ -44,9 +44,9 @@
                 <p>
                   Load ml-lodlive.css, and ml-lodlive-ng.css into your HTML page (typically in the end of the <em>HEAD</em> of your HTML):
                 </p>
-                <pre hljs language="html">
-<link rel="stylesheet" href="/bower_components/ml-lodlive/css/ml-lodlive.css"></pre>
-<link rel="stylesheet" href="/bower_components/ml-lodlive-ng/dist/ml-lodlive-ng.css"></pre>
+                <pre hljs no-escape language="html">
+&lt;link rel="stylesheet" href="/bower_components/ml-lodlive/css/ml-lodlive.css">
+&lt;link rel="stylesheet" href="/bower_components/ml-lodlive-ng/dist/ml-lodlive-ng.css"></pre>
                 <p class="text-muted">
                   Note: You can simplify this by making use of <a href="https://www.npmjs.com/package/wiredep" rel="external">wiredep</a>, optionally together with <a href="https://www.npmjs.com/package/gulp-useref" rel="external">gulp-useref</a>.
                 </p>
@@ -55,24 +55,27 @@
                 </p>
             </li>
             
-            <!-- 5 -->
+            <!-- 4 -->
             <li>
                 <p>
                   Make your application module depend on the <code>ml-lodlive-ng</code> module:
                 </p>
-                <div hljs language="js">angular.module('myApplicationModule', ['ml.lodlive']);</div>
+                <div hljs no-escape language="js">angular.module('myApplicationModule', ['ml.lodlive']);</div>
             </li>
             
-            <!-- 6 -->
+            <!-- 5 -->
             <li>
                 <p>
-                  Add objects and call-back functions to your scope like so:
+                  Make sure to inject the MLLodliveProfileFactory, and expose a starting iri, and a default profile in your Angular controller:
                 </p>
-                <pre hljs language="js">
-$scope.model = {
-  iri: 'http://dbpedia.org/resource/Barack_Obama',
-  profile: factory.profile('dbpedia')
-};
+                <pre hljs no-escape language="js">
+MyCtrl.$inject = ['$scope', 'MLLodliveProfileFactory'];
+function MyCtrl($scope, factory) {
+  var ctrl = this;
+
+  ctrl.iri = 'http://dbpedia.org/resource/Barack_Obama';
+  ctrl.profile = factory.profile('dbpedia');
+}
 </pre>
             </li>
 
@@ -81,18 +84,17 @@ $scope.model = {
                 <p>
                   Add a <code>&lt;ml-lodlive&gt;</code> element in your template like so:
                 </p>
-                <pre hljs language="html">
-<ml-lodlive iri="model.iri" profile="model.profile">
-</ml-lodlive></pre>
+                <pre hljs no-escape language="html">
+&lt;ml-lodlive iri="ctrl.iri" profile="ctrl.profile">
+&lt;/ml-lodlive></pre>
             </li>
 
             <!-- 8 -->
             <li>
                 <p>
-                  Optionally override the height via CSS for the map container:
+                  Optionally override the height of the canvas via CSS:
                 </p>
-                <div hljs language="css">.map-canvas { height: 400px !important; }</div>
-                <!--div hljs language="css">.angular-google-map-container { height: 400px; }</div-->
+                <div hljs no-escape language="css">.ml-lodlive { height: 600px !important; }</div>
             </li>
         </ol>
     </div>
