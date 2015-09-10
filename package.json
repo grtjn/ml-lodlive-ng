@@ -1,6 +1,6 @@
 {
   "name": "ml-lodlive-ng",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Angular directive that wraps around Matt's ml-lodlive project",
   "dependencies": {},
   "devDependencies": {
