@@ -24,7 +24,7 @@ gulp.task('clean', function () {
       'index*.html',
       'scripts/*',
       'styles/*',
-      'images/*',
+      'img/*',
       'fonts/*'
     ], {read: false})
     .pipe(info(function(filepath) {
@@ -114,10 +114,10 @@ gulp.task('minify', ['copy-index'], function () {
 
 gulp.task('images', ['minify'], function () {
   return gulp.src([
-      'bower_components/**/images/**/*.*'
+      'bower_components/**/img/**/*.*'
     ])
     .pipe(flatten())
-    .pipe(gulp.dest('./images/'))
+    .pipe(gulp.dest('./img/'))
     .pipe(info(function(filepath) {
       return 'writing: ' + filepath;
     }))

@@ -23,6 +23,12 @@
         "dist/css/bootstrap.css",
         "dist/js/bootstrap.js"
       ]
+    },
+    "ml-lodlive": {
+      "main": [
+        "css/ml-lodlive.css",
+        "dist/ml-lodlive-complete.js"
+      ]
     }
   }
 }
