@@ -2,13 +2,12 @@
   'use strict';
   
   angular
-    .module('mlGoogleMapsDemo', [
+    .module('mlLodLiveNgDemo', [
       'ui.router',
       'ui.bootstrap',
-      'uiGmapgoogle-maps',
-      'ml.google-maps',
+      'ml.lodlive',
       'hljs',
-      'mlGoogleMapsDemo.Tpls'
+      'mlLodLiveNgDemo.Tpls'
     ])
     
     .config([
@@ -27,7 +26,7 @@
     $stateProvider
       .state('home', {
         url: '/',
-        controller: 'mlGoogleMapsDemo.HomeCtrl',
+        controller: 'mlLodLiveNgDemo.HomeCtrl',
         controllerAs: 'ctrl',
         templateUrl: '/home.html',
         resolve: {
@@ -35,7 +34,7 @@
       })
       .state('quickstart', {
         url: '/quickstart',
-        controller: 'mlGoogleMapsDemo.HomeCtrl',
+        controller: 'mlLodLiveNgDemo.HomeCtrl',
         controllerAs: 'ctrl',
         templateUrl: '/quickstart.html',
         resolve: {
