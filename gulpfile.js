@@ -7,7 +7,7 @@ var gulp = require('gulp'),
     html2Js = require('gulp-ng-html2js'),
     less = require('gulp-less'),
     jshint = require('gulp-jshint'),
-    karma = require('karma').server,
+    Server = require('karma').Server,
     minifyHtml = require('gulp-minify-html'),
     path = require('path'),
     rename = require('gulp-rename'),
@@ -61,7 +61,7 @@ gulp.task('scripts', ['templates'], function() {
     .pipe(info(function(filepath) {
       return 'writing: ' + filepath;
     }))
-    
+
     .pipe(rename('ml-lodlive-ng.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist'))
@@ -85,7 +85,7 @@ gulp.task('styles', ['scripts'], function() {
     .pipe(info(function(filepath) {
       return 'writing: ' + filepath;
     }))
-    
+
     .pipe(rename('ml-lodlive-ng.min.css'))
     .pipe(minifyCss())
     .pipe(sourcemaps.write())
@@ -97,24 +97,24 @@ gulp.task('styles', ['scripts'], function() {
 });
 
 gulp.task('test', function() {
-  karma.start({
+  new Server({
     configFile: path.join(__dirname, './karma.conf.js'),
     singleRun: true,
     autoWatch: false
   }, function (exitCode) {
     console.log('Karma has exited with ' + exitCode);
     process.exit(exitCode);
-  });
+  }).start();
 });
 
 gulp.task('autotest', function() {
-  karma.start({
+  new Server({
     configFile: path.join(__dirname, './karma.conf.js'),
     autoWatch: true
   }, function (exitCode) {
     console.log('Karma has exited with ' + exitCode);
     //process.exit(exitCode);
-  });
+  }).start();
 });
 
 gulp.task('default', ['styles']);
