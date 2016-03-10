@@ -1,1 +1,1 @@
-angular.module('ml.lodlive', ['ml.common', 'ml.lodlive.tpls']);
+angular.module('ml.lodlive', ['ml.lodlive.tpls']);

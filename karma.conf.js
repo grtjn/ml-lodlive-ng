@@ -15,8 +15,14 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       // Required libraries
+      'node_modules/phantomjs-polyfill/bind-polyfill.js',
+      'node_modules/jquery/dist/jquery.min.js',
       'bower_components/angular/angular.js',
-      
+      'bower_components/ml-lodlive/dist/ml-lodlive.complete.js',
+
+      // templates
+      'build/**/*.js',
+
       // App under test
       'src/ml-lodlive.js',
       'src/**/*.js',
@@ -25,7 +31,6 @@ module.exports = function(config) {
       'bower_components/angular-mocks/angular-mocks.js',
 
       // Tests
-      // 'ui/test/**/*.js'
       'test/helpers.js',
       'test/spec/**/*.js',
     ],
@@ -37,7 +42,10 @@ module.exports = function(config) {
     },
 
     coverageReporter: {
-      type : 'text-summary'
+      reporters: [
+        { type : 'text-summary' },
+        { type : 'lcov', dir : 'coverage/' }
+      ]
     },
 
     // list of files / patterns to exclude
