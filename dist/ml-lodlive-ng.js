@@ -10,9 +10,10 @@ angular.module('ml.lodlive', ['ml.lodlive.tpls']);
         replace: true,
         scope: {
           iri: '=',
-          profile: '='
+          profile: '=',
+          zooming: '@'
         },
-        template: '<div class="ml-lodlive"><ml-lodlive-legend profile="profile"></ml-lodlive-legend></div>',
+        template: '<div class="ml-lodlive"><ml-lodlive-legend profile="profile" zooming="zooming"></ml-lodlive-legend></div>',
         link: function($scope, $elem, $attrs) {
 
           $scope.$watch('iri', function(newVal, oldVal) {
@@ -38,7 +39,8 @@ angular.module('ml.lodlive', ['ml.lodlive.tpls']);
         controller: 'MLLodliveLegendCtrl',
         replace: true,
         scope: {
-          profile: '='
+          profile: '=',
+          zooming: '='
         },
         templateUrl: '/ml-lodlive-ng/ml-lodlive-legend-dir.html'
       };
@@ -95,12 +97,12 @@ angular.module('ml.lodlive', ['ml.lodlive.tpls']);
 
           for (var p in rels) {
             if (rels.hasOwnProperty(p)) {
-              var title = p;
-              if (p.indexOf('#') > -1) {
-                title = p.substring(p.lastIndexOf('#') + 1);
+              var title = rels[p].title || p;
+              if (title.indexOf('#') > -1) {
+                title = title.substring(title.lastIndexOf('#') + 1);
               }
-              else if (p.indexOf('/') > -1) {
-                title = p.substring(p.lastIndexOf('/') + 1);
+              else if (title.indexOf('/') > -1) {
+                title = title.substring(title.lastIndexOf('/') + 1);
               }
 
               model.relationships.push({
@@ -111,19 +113,29 @@ angular.module('ml.lodlive', ['ml.lodlive.tpls']);
             }
           }
         }
-
-        // Add the default color used when a relationship doesn't have a specified color.
-        model.relationships.push({
-          icon: 'fa fa-circle',
-          title: 'other',
-          style: 'color: #369;'
-        });
       }
 
       initRelationships();
 
+      var zoom = 1.0;
+
       angular.extend($scope, {
-        model: model
+        model: model,
+        zoomReset: function() {
+          zoom = 1.0;
+          var graph = $('.lodlive-graph-context')[0];
+          graph.style.transform = 'scale('+zoom+')';
+        },
+        zoomIn: function() {
+          zoom = zoom + 0.1;
+          var graph = $('.lodlive-graph-context')[0];
+          graph.style.transform = 'scale('+zoom+')';
+        },
+        zoomOut: function() {
+          zoom = zoom - 0.1;
+          var graph = $('.lodlive-graph-context')[0];
+          graph.style.transform = 'scale('+zoom+')';
+        }
       });
     }]);
 
@@ -295,28 +307,48 @@ angular.module('ml.lodlive', ['ml.lodlive.tpls']);
           nodeHover: function() {},
           relationships: {
             'http://www.w3.org/1999/02/22-rdf-syntax-ns#type': {
-              color: '#000'
+              color: '#000',
+              title: 'rdf:type'
+            },
+            'http://www.w3.org/1999/02/22-rdf-syntax-ns#instance': {
+              color: '#000',
+              title: 'rdf:instance'
             },
             'http://www.w3.org/2004/02/skos/core#broader': {
-              color: '#69C'
+              color: '#69C',
+              title: 'skos:broader'
+            },
+            'http://www.w3.org/2004/02/skos/core#narrower': {
+              color: '#69C',
+              title: 'skos:narrower'
             },
             'http://www.w3.org/2004/02/skos/core#related': {
-              color: '#FFF444'
+              color: '#69C',
+              title: 'skos:related'
             },
             'http://www.w3.org/2002/07/owl#imports': {
-              color: '#FA0527'
+              color: '#FA0527',
+              title: 'owl:imports'
+            },
+            'http://www.w3.org/2002/07/owl#sameAs': {
+              color: '#FA0527',
+              title: 'owl:sameAs'
             },
             'http://www.w3.org/2000/01/rdf-schema#subClassOf': {
-              color: '#FA7F05'
-            },
-            'http://ieee.org/concept/hasAffiliation': {
-              color: '#588F27'
+              color: '#FA7F05',
+              title: 'rdfs:subClassOf'
             },
             'http://www.w3.org/2000/01/rdf-schema#isDefinedBy': {
-              color: '#DD4492'
+              color: '#FA7F05',
+              title: 'rdfs:isDefinedBy'
+            },
+            'http://ieee.org/concept/hasAffiliation': {
+              color: '#588F27',
+              title: 'ieee:hasAffiliation'
             },
             'http://purl.org/dc/elements/1.1/contributor': {
-              color: '#04756F'
+              color: '#04756F',
+              title: 'dc:contributor'
             }
           }
         };
@@ -348,6 +380,6 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('/ml-lodlive-ng/ml-lodlive-legend-dir.html',
-    '<div id="ml-lodlive-legend" class="ml-lodlive-legend"><div class="ml-lodlive-legend-toggle"><button class="btn btn-xs ml-lodlive-legend-button" ng-click="model.showLegend = !model.showLegend"><i class="fa fa-life-ring"></i></button></div><div class="ml-lodlive-legend-display" ng-if="model.showLegend"><h4><b>Legend</b></h4><div ng-repeat="item in model.items"><span class="{{item.icon}}"></span> {{item.title}}</div><h5><b>Relationships</b></h5><div ng-repeat="rel in model.relationships"><span class="{{rel.icon}}" style="{{rel.style}}"></span> {{rel.title}}</div></div></div>');
+    '<div class="ml-lodlive-toolbar"><div class="ml-lodlive-legend-toggle"><button class="btn btn-xs ml-lodlive-toolbar-button" ng-click="model.showLegend = !model.showLegend"><i class="glyphicon glyphicon-info-sign"></i></button></div><div class="ml-lodlive-legend-display" ng-if="model.showLegend"><h4>Legend</h4><div ng-repeat="item in model.items"><span class="{{item.icon}}"></span> {{item.title}}</div><h5>Relationships</h5><div ng-repeat="rel in model.relationships | orderBy:\'title\' track by $index"><span class="{{rel.icon}}" style="{{rel.style}}"></span> {{rel.title}}</div><div><span class="fa fa-circle" style="color: #369;"></span> other</div></div><div class="ml-lodlive-zooming" ng-if="zooming"><div><button class="btn btn-xs ml-lodlive-toolbar-button" ng-click="zoomIn()"><i class="glyphicon glyphicon-zoom-in"></i></button></div><div><button class="btn btn-xs ml-lodlive-toolbar-button" ng-click="zoomOut()"><i class="glyphicon glyphicon-zoom-out"></i></button></div><div><button class="btn btn-xs ml-lodlive-toolbar-button" ng-click="zoomReset()"><i class="glyphicon glyphicon-refresh"></i></button></div></div></div>');
 }]);
 })();

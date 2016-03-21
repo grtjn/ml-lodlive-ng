@@ -8,9 +8,10 @@
         replace: true,
         scope: {
           iri: '=',
-          profile: '='
+          profile: '=',
+          zooming: '@'
         },
-        template: '<div class="ml-lodlive"><ml-lodlive-legend profile="profile"></ml-lodlive-legend></div>',
+        template: '<div class="ml-lodlive"><ml-lodlive-legend profile="profile" zooming="zooming"></ml-lodlive-legend></div>',
         link: function($scope, $elem, $attrs) {
 
           $scope.$watch('iri', function(newVal, oldVal) {

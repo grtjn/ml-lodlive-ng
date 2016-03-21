@@ -9,7 +9,8 @@
         controller: 'MLLodliveLegendCtrl',
         replace: true,
         scope: {
-          profile: '='
+          profile: '=',
+          zooming: '='
         },
         templateUrl: '/ml-lodlive-ng/ml-lodlive-legend-dir.html'
       };
@@ -66,12 +67,12 @@
 
           for (var p in rels) {
             if (rels.hasOwnProperty(p)) {
-              var title = p;
-              if (p.indexOf('#') > -1) {
-                title = p.substring(p.lastIndexOf('#') + 1);
+              var title = rels[p].title || p;
+              if (title.indexOf('#') > -1) {
+                title = title.substring(title.lastIndexOf('#') + 1);
               }
-              else if (p.indexOf('/') > -1) {
-                title = p.substring(p.lastIndexOf('/') + 1);
+              else if (title.indexOf('/') > -1) {
+                title = title.substring(title.lastIndexOf('/') + 1);
               }
 
               model.relationships.push({
@@ -82,19 +83,29 @@
             }
           }
         }
-
-        // Add the default color used when a relationship doesn't have a specified color.
-        model.relationships.push({
-          icon: 'fa fa-circle',
-          title: 'other',
-          style: 'color: #369;'
-        });
       }
 
       initRelationships();
 
+      var zoom = 1.0;
+
       angular.extend($scope, {
-        model: model
+        model: model,
+        zoomReset: function() {
+          zoom = 1.0;
+          var graph = $('.lodlive-graph-context')[0];
+          graph.style.transform = 'scale('+zoom+')';
+        },
+        zoomIn: function() {
+          zoom = zoom + 0.1;
+          var graph = $('.lodlive-graph-context')[0];
+          graph.style.transform = 'scale('+zoom+')';
+        },
+        zoomOut: function() {
+          zoom = zoom - 0.1;
+          var graph = $('.lodlive-graph-context')[0];
+          graph.style.transform = 'scale('+zoom+')';
+        }
       });
     }]);
 

@@ -164,28 +164,48 @@
           nodeHover: function() {},
           relationships: {
             'http://www.w3.org/1999/02/22-rdf-syntax-ns#type': {
-              color: '#000'
+              color: '#000',
+              title: 'rdf:type'
+            },
+            'http://www.w3.org/1999/02/22-rdf-syntax-ns#instance': {
+              color: '#000',
+              title: 'rdf:instance'
             },
             'http://www.w3.org/2004/02/skos/core#broader': {
-              color: '#69C'
+              color: '#69C',
+              title: 'skos:broader'
+            },
+            'http://www.w3.org/2004/02/skos/core#narrower': {
+              color: '#69C',
+              title: 'skos:narrower'
             },
             'http://www.w3.org/2004/02/skos/core#related': {
-              color: '#FFF444'
+              color: '#69C',
+              title: 'skos:related'
             },
             'http://www.w3.org/2002/07/owl#imports': {
-              color: '#FA0527'
+              color: '#FA0527',
+              title: 'owl:imports'
+            },
+            'http://www.w3.org/2002/07/owl#sameAs': {
+              color: '#FA0527',
+              title: 'owl:sameAs'
             },
             'http://www.w3.org/2000/01/rdf-schema#subClassOf': {
-              color: '#FA7F05'
-            },
-            'http://ieee.org/concept/hasAffiliation': {
-              color: '#588F27'
+              color: '#FA7F05',
+              title: 'rdfs:subClassOf'
             },
             'http://www.w3.org/2000/01/rdf-schema#isDefinedBy': {
-              color: '#DD4492'
+              color: '#FA7F05',
+              title: 'rdfs:isDefinedBy'
+            },
+            'http://ieee.org/concept/hasAffiliation': {
+              color: '#588F27',
+              title: 'ieee:hasAffiliation'
             },
             'http://purl.org/dc/elements/1.1/contributor': {
-              color: '#04756F'
+              color: '#04756F',
+              title: 'dc:contributor'
             }
           }
         };
