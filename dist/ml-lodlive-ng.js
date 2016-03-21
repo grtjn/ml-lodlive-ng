@@ -1,4 +1,5 @@
-angular.module('ml.lodlive', ['ml.common', 'ml.lodlive.tpls']);
+angular.module('ml.lodlive', ['ml.lodlive.tpls']);
+
 (function () {
   'use strict';
 
@@ -235,9 +236,7 @@ angular.module('ml.lodlive', ['ml.common', 'ml.lodlive.tpls']);
           // http matches all http requests, so this will be the only connection settings used
           'http:': {
             endpoint: '/v1/graphs/sparql',
-            accepts: {
-              json: 'application/sparql-results+json'
-            },
+            accepts: 'application/sparql-results+json',
             description: {
               en: 'MarkLogic LodLive'
             }

@@ -105,9 +105,7 @@
           // http matches all http requests, so this will be the only connection settings used
           'http:': {
             endpoint: '/v1/graphs/sparql',
-            accepts: {
-              json: 'application/sparql-results+json'
-            },
+            accepts: 'application/sparql-results+json',
             description: {
               en: 'MarkLogic LodLive'
             }
