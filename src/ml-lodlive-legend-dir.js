@@ -62,7 +62,7 @@
 
       function initRelationships() {
         // The MarkLogic Lodlive profile is in global scope.
-        if (model.profile.UI && model.profile.UI.relationships) {
+        if (model.profile && model.profile.UI && model.profile.UI.relationships) {
           var rels = model.profile.UI.relationships;
 
           for (var p in rels) {
